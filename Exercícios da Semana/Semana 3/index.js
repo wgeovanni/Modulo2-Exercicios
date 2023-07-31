@@ -36,7 +36,14 @@ const server = http.createServer((req, res) => {
             res.end(ListarProdutos())
             break
         case "POST":
-            // aqui vai a lógica do POST - exercício 7
+            let dataPost = ''
+            req.on("data", (chunk) => {
+                dataPost += chunk
+            })
+            req.on("end", () => {
+                res.writeHead(201, { "Content-Type": "text/plain; charset: utf-8;" })
+                res.end(CriarProduto(dataPost))
+            })
             break
     }
 })
