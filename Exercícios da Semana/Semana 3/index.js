@@ -11,12 +11,29 @@ function ListarProdutos() {
     }
 }
 
+function CriarProduto(novoProduto) {
+    try {
+        const dados = JSON.parse(fs.readFileSync("dados.json", "utf-8"))
+
+        let produto = JSON.parse(novoProduto)
+        let ultimoProduto = dados.produtos[dados.produtos.length - 1]
+        produto.id = ultimoProduto.id + 1 || 1
+
+        dados.produtos.push(produto)
+
+        fs.writeFileSync("dados.json", JSON.stringify(dados))
+        return "Produto cadastrado com sucesso!"
+    } catch (erro) {
+        return "Erro ao executar: " + erro.message
+    }
+}
+
 const server = http.createServer((req, res) => {
 
     switch (req.method) {
         case "GET":
-            response.writeHead(200, { "Content-Type": "application/json; charset: utf-8;" })
-            response.end(ListarProdutos())
+            res.writeHead(200, { "Content-Type": "application/json; charset: utf-8;" })
+            res.end(ListarProdutos())
             break
         case "POST":
             // aqui vai a lógica do POST - exercício 7
