@@ -20,6 +20,5 @@ create table Tarefa(
 	concluida BOOLEAN,
 	projetoID INT,
 	categoriaID INT,
-	foreign key (projetoID) references Projeto (ID),
-	foreign key (categoriaID) references Categoria (ID) --Exercicio 8
+	foreign key (projetoID) references Projeto (ID), --Exercicio 5
 );
