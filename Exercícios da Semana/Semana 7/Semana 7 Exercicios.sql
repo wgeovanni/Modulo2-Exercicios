@@ -105,3 +105,12 @@ JOIN Venda AS V ON U.id_usuario = V.id_usuario
 WHERE EXTRACT(MONTH FROM V.dt_compra) = 11
 GROUP BY U.nome_usuario
 ORDER BY valor_total_gasto DESC;
+
+--Exercicio 8
+SELECT U.nome_usuario, SUM(V.valor_passagem) AS valor_total_gasto
+FROM Usuario AS U
+JOIN Reserva AS R ON U.id_usuario = R.id_usuario
+JOIN Viagem AS V ON R.id_viagem = V.id_viagem
+WHERE EXTRACT(MONTH FROM V.data_viagem) = 7
+GROUP BY U.nome_usuario
+ORDER BY valor_total_gasto DESC;
