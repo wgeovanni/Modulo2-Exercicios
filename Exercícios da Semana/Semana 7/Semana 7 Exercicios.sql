@@ -46,3 +46,22 @@ CREATE TABLE Biblioteca (
   FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
   PRIMARY KEY (jogo_id, usuario_id)
 );
+
+--Exercicio 4
+INSERT INTO Plataforma (nome)
+VALUES ('PS1'), ('PS2'), ('PS3'), ('PS4'), ('PS5'), ('Xbox Series S'), ('Xbox Series X'), ('PC');
+
+INSERT INTO Genero (nome)
+VALUES ('Simulação'), ('Ação'), ('FPS'), ('Estraégia'), ('Outros');
+
+INSERT INTO Usuario (nome, login, email, senha, cpf, rg, dt_nascimento)
+VALUES ('Derpson da Silva', 'derpinho', 'derpinho91@hotmail.com', 'derpinho91', '12312312312', '4123123', '1991-01-01');
+
+INSERT INTO Jogo (nome, dt_lancamento, foto, video, genero_id)
+VALUES ('The Sims 4 Base', '2014-09-02', 'caminho_da_foto', 'caminho_do_video', 1);
+
+INSERT INTO PlataformaJogo (jogo_id, plataforma_id)
+VALUES (1, 4), (1, 5), (1, 8);
+
+INSERT INTO Biblioteca (jogo_id, usuario_id)
+VALUES (1, 1);
