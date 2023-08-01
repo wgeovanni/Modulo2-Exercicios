@@ -55,3 +55,19 @@ insert into Tarefa (nome, descricao, data_inicio, data_prazo, concluida, projeto
 	('Tarefa 3', 'Descrição da tarefa 3', '2023-03-05', '2023-03-15', false, 2, 3),
 	('Tarefa 4', 'Descrição da tarefa 4', '2023-03-10', '2023-03-20', false, 2, 1),
 	('Tarefa 5', 'Descrição da tarefa 5', '2023-05-05', '2023-05-15', false, 3, 2);
+
+--Exercicio 10
+--Quais tarefas foram concluídas
+select * from Tarefa where concluida = true;
+
+--Quais tarefas estão atrasadas
+select * from Tarefa where data_prazo < current_date and concluida = false;
+
+--Contagem de tarefas por projeto
+select 
+	Projeto.nome as "Projeto",
+	Count(Tarefa.ID) as "Tarefas do projeto"
+from Projeto
+left join Tarefa
+	on Projeto.ID = Tarefa.projetoID
+	group by Projeto.ID;
