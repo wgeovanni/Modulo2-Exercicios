@@ -65,3 +65,9 @@ VALUES (1, 4), (1, 5), (1, 8);
 
 INSERT INTO Biblioteca (jogo_id, usuario_id)
 VALUES (1, 1);
+
+--Exercicio 4
+SELECT Nome_do_filme, Duracao_do_filme_em_minutos
+FROM Filme
+WHERE Nome_do_filme LIKE '%Ação'
+ORDER BY Duracao_do_filme_em_minutos;
