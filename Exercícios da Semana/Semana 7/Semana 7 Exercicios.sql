@@ -97,3 +97,11 @@ HAVING SUM(C.qtd_populacao) < (
     WHERE E2.nome_estado = 'Espanha'
 )
 ORDER BY populacao_total DESC;
+
+--Exercicio 7
+SELECT U.nome_usuario, SUM(V.valor_produto * V.quantidade_produto) AS valor_total_gasto
+FROM Usuario AS U
+JOIN Venda AS V ON U.id_usuario = V.id_usuario
+WHERE EXTRACT(MONTH FROM V.dt_compra) = 11
+GROUP BY U.nome_usuario
+ORDER BY valor_total_gasto DESC;
