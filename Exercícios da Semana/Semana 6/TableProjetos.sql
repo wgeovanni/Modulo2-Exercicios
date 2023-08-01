@@ -22,3 +22,11 @@ create table Tarefa(
 	categoriaID INT,
 	foreign key (projetoID) references Projeto (ID), --Exercicio 5
 );
+
+--Exercicio 7
+create table Categoria(
+
+	ID serial PRIMARY KEY,
+	nome VARCHAR(50),
+	descricao VARCHAR(200)
+);
