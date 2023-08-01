@@ -38,3 +38,11 @@ CREATE TABLE PlataformaJogo (
   FOREIGN KEY (plataforma_id) REFERENCES Plataforma(id),
   PRIMARY KEY (jogo_id, plataforma_id)
 );
+
+CREATE TABLE Biblioteca (
+  jogo_id INT,
+  usuario_id INT,
+  FOREIGN KEY (jogo_id) REFERENCES Jogo(id),
+  FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
+  PRIMARY KEY (jogo_id, usuario_id)
+);
