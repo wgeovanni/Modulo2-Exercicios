@@ -21,7 +21,14 @@ create table Tarefa(
 	projetoID INT,
 	categoriaID INT,
 	foreign key (projetoID) references Projeto (ID), --Exercicio 5
+	foreign key (categoriaID) references Categoria (ID) 
 );
+
+ALTER TABLE tarefa
+ADD FOREIGN KEY (projetoId) REFERENCES projeto(id);
+
+ALTER TABLE tarefa
+ADD FOREIGN KEY (categoriaId) REFERENCES categoria(id);--Exercicio 8
 
 --Exercicio 7
 create table Categoria(
