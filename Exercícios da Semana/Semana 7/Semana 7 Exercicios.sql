@@ -82,3 +82,18 @@ WHERE C.capital = 'True'
   AND (E.nome_estado LIKE 'São%' OR E.nome_estado LIKE 'Santo%' OR E.nome_estado LIKE 'San%' OR E.nome_estado LIKE 'Saint%')
   AND P.continente IN ('América do Norte', 'América Central', 'América do Sul')
 ORDER BY P.nome_pais, E.nome_estado, C.nome_cidade;
+
+--Exercicio 6
+SELECT P.nome_pais, SUM(C.qtd_populacao) AS populacao_total
+FROM Pais AS P
+JOIN Estado AS E ON P.id_pais = E.id_pais
+JOIN Cidade AS C ON E.id_estado = C.id_estado
+WHERE P.continente = 'Europa' AND E.nome_estado = 'Espanha'
+GROUP BY P.nome_pais
+HAVING SUM(C.qtd_populacao) < (
+    SELECT SUM(C2.qtd_populacao)
+    FROM Cidade AS C2
+    JOIN Estado AS E2 ON C2.id_estado = E2.id_estado
+    WHERE E2.nome_estado = 'Espanha'
+)
+ORDER BY populacao_total DESC;
