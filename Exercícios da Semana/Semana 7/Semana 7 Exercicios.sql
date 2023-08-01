@@ -71,3 +71,14 @@ SELECT Nome_do_filme, Duracao_do_filme_em_minutos
 FROM Filme
 WHERE Nome_do_filme LIKE '%Ação'
 ORDER BY Duracao_do_filme_em_minutos;
+
+--Exercicio 5
+SELECT P.nome_pais, E.nome_estado, C.nome_cidade
+FROM Cidade AS C
+JOIN Estado AS E ON C.id_estado = E.id_estado
+JOIN Pais AS P ON E.id_pais = P.id_pais
+WHERE C.capital = 'True'
+  AND C.qtd_populacao > 500000
+  AND (E.nome_estado LIKE 'São%' OR E.nome_estado LIKE 'Santo%' OR E.nome_estado LIKE 'San%' OR E.nome_estado LIKE 'Saint%')
+  AND P.continente IN ('América do Norte', 'América Central', 'América do Sul')
+ORDER BY P.nome_pais, E.nome_estado, C.nome_cidade;
